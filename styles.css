@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.game-container {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.screen {
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #e94560;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.character-customization {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.customization-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+}
+
+.options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    background: #e94560;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: #b81d3d;
+    transform: translateY(-2px);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+}
+
+.player-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    min-height: 300px;
+}
+
+.player-character, .monster-area {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-character img, .monster-area img {
+    max-width: 100%;
+    height: auto;
+}
+
+.battle-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.inventory-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.inventory-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.inventory-item img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+}
+
+.inventory-item .quantity {
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffd700;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+#start-game {
+    background: #4CAF50;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+}
+
+#start-game:hover {
+    background: #45a049;
+}
+
+#start-game:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.upgrades {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.upgrade-item {
+    margin: 1rem 0;
+}
+
+.upgrade-item button {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.upgrade-item button:hover {
+    background: #1976D2;
+}
+
+.upgrade-item button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.hair-option, .clothes-option {
+    background: #e94560;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    min-width: 120px;
+}
+
+.hair-option.selected, .clothes-option.selected {
+    background: #4CAF50;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.hair-option:hover, .clothes-option:hover {
+    background: #b81d3d;
+    transform: translateY(-2px);
+}
+
+.class-selection, .skin-selection {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+}
+
+.class-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.class-option {
+    background: #e94560;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    min-width: 150px;
+}
+
+.class-option.selected {
+    background: #4CAF50;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.class-option:hover {
+    background: #b81d3d;
+    transform: translateY(-2px);
+}
+
+.skin-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skin-option {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.skin-option.selected {
+    background: #4CAF50;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+}
+
+.skin-option:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.skin-option img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.skin-option img.locked {
+    filter: grayscale(100%) brightness(0.7);
+}
+
+.skin-option .price {
+    color: #ffd700;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.unlock-button {
+    background: #ffd700;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.unlock-button:hover {
+    background: #ffed4a;
+    transform: translateY(-2px);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+#customize-character {
+    background: #9c27b0;
+}
+
+#customize-character:hover {
+    background: #7b1fa2;
+}
+
+.inventory-category {
+    color: #ffd700;
+    text-align: left;
+    margin: 1.5rem 0 0.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.item-stats {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.inventory-item.equipped {
+    border: 2px solid #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.floating-damage {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1000;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    animation: float-up 1s ease-out forwards;
+}
+
+.player-damage {
+    color: #ff4444;
+}
+
+.monster-damage {
+    color: #ff0000;
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.sell-price {
+    color: #ffd700;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+.inventory-item:hover .sell-price {
+    opacity: 1;
+}
+
+.diamonds-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.diamond-package {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.diamond-package:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.diamond-package h3 {
+    color: #e94560;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.diamond-package p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.diamond-package .price {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.diamond-package button {
+    margin-top: 1rem;
+    background: #4CAF50;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.diamond-package button:hover {
+    background: #45a049;
+}
+
+#buy-diamonds {
+    background: #9c27b0;
+}
+
+#buy-diamonds:hover {
+    background: #7b1fa2;
+}
+
+#close-diamonds {
+    margin-top: 2rem;
+    background: #e94560;
+}
+
+#close-diamonds:hover {
+    background: #b81d3d;
+} 

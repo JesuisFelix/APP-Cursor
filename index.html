@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon RPG Casual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div id="character-creation" class="screen">
+            <h1>Création de Personnage</h1>
+            <div class="character-customization">
+                <div class="class-selection">
+                    <h2>Choisissez votre classe</h2>
+                    <div class="class-options">
+                        <button class="class-option" data-class="paladin">Paladin</button>
+                        <button class="class-option" data-class="guerrier">Guerrier</button>
+                        <button class="class-option" data-class="mage">Mage</button>
+                        <button class="class-option" data-class="archer">Archer</button>
+                    </div>
+                </div>
+                <div class="skin-selection">
+                    <h2>Choisissez votre apparence</h2>
+                    <div class="skin-options" id="skin-options">
+                        <!-- Les skins seront ajoutés dynamiquement ici -->
+                    </div>
+                </div>
+                <button id="start-game">Commencer l'Aventure</button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div class="player-stats">
+                    <span>Niveau: <span id="level">1</span></span>
+                    <span>PV: <span id="hp">100</span>/<span id="max-hp">100</span></span>
+                    <span>Pièces: <span id="coins">0</span></span>
+                    <span>💎: <span id="diamonds">0</span></span>
+                </div>
+                <div class="header-buttons">
+                    <button id="customize-character">Personnaliser</button>
+                    <button id="open-inventory">Inventaire</button>
+                    <button id="buy-diamonds">Acheter des 💎</button>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div class="player-character">
+                    <img id="character-sprite" src="assets/characters/default.png" alt="Personnage">
+                </div>
+                <div class="monster-area">
+                    <img id="monster-sprite" src="assets/monsters/slime.png" alt="Monstre">
+                </div>
+            </div>
+
+            <div class="battle-controls">
+                <button id="attack">Attaquer</button>
+                <button id="use-item">Utiliser un objet</button>
+            </div>
+        </div>
+
+        <div id="inventory-screen" class="screen hidden">
+            <h2>Inventaire</h2>
+            <div class="inventory-grid" id="inventory-items">
+                <!-- Les items seront ajoutés ici dynamiquement -->
+            </div>
+            <button id="close-inventory">Fermer</button>
+        </div>
+
+        <div id="diamonds-screen" class="screen hidden">
+            <h2>Acheter des Diamants</h2>
+            <div class="diamonds-options">
+                <div class="diamond-package">
+                    <h3>Petit Pack</h3>
+                    <p>100 💎</p>
+                    <p class="price">4.99€</p>
+                    <button onclick="buyDiamonds(100, 4.99)">Acheter</button>
+                </div>
+                <div class="diamond-package">
+                    <h3>Pack Moyen</h3>
+                    <p>500 💎</p>
+                    <p class="price">19.99€</p>
+                    <button onclick="buyDiamonds(500, 19.99)">Acheter</button>
+                </div>
+                <div class="diamond-package">
+                    <h3>Grand Pack</h3>
+                    <p>1200 💎</p>
+                    <p class="price">39.99€</p>
+                    <button onclick="buyDiamonds(1200, 39.99)">Acheter</button>
+                </div>
+            </div>
+            <button id="close-diamonds">Fermer</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
